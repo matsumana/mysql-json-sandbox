@@ -24,7 +24,11 @@ public class NoteService {
         mapper.insert(note);
     }
 
-    public Note select(int id) {
-        return mapper.select(id);
+    public Note selectById(int id) {
+        return mapper.selectById(id);
+    }
+
+    public Note selectByName(String name) {
+        return mapper.selectByName(name);
     }
 }

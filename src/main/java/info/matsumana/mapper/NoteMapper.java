@@ -15,5 +15,8 @@ public interface NoteMapper {
     void insert(Note note);
 
     @Select("SELECT id, title, detail FROM note WHERE id = #{id}")
-    Note select(int id);
+    Note selectById(int id);
+
+    @Select("SELECT * FROM note WHERE detail->'$.names[*].name' like #{name}")
+    Note selectByName(String name);
 }

@@ -1,7 +1,6 @@
 package info.matsumana.jsontype;
 
 import java.util.List;
-import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,5 +9,5 @@ import lombok.Data;
 @Data
 public class NoteDetails {
     private List<NoteDetail> names;
-    private Map<String, Integer> sections;
+    private NoteDetailSection section;
 }

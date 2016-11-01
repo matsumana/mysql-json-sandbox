@@ -4,4 +4,5 @@ CREATE TABLE note (
   , title  VARCHAR(64)
   , detail JSON
   , PRIMARY KEY (id)
-);
+)
+  COLLATE UTF8MB4_BIN;
