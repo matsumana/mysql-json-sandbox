@@ -22,4 +22,7 @@ public interface NoteMapper {
 
     @Select("SELECT * FROM note WHERE detail->'$.section.chapter1' >= #{pages}")
     Note selectByPages(int pages);
+
+    @Select("SELECT * FROM note where name0 = #{name0}")
+    Note selectByName0(String name0);
 }

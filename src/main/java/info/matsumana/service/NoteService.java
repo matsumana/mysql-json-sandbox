@@ -35,4 +35,8 @@ public class NoteService {
     public Note selectByPages(int pages) {
         return mapper.selectByPages(pages);
     }
+
+    public Note selectByName0(String name0) {
+        return mapper.selectByName0(name0);
+    }
 }

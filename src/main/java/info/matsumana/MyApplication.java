@@ -3,6 +3,7 @@ package info.matsumana;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -62,6 +63,18 @@ public class MyApplication implements CommandLineRunner {
                                new NoteDetailSection(1_000, 400))
         );
 
+        service.insert("タイトル4",
+                       new NoteDetails(
+                               Arrays.asList(
+                                       new NoteDetail("ほげ", LocalDate.of(2016, 1, 30),
+                                                      LocalDateTime.of(2016, 1, 30, 5, 13, 59)),
+                                       new NoteDetail("ふが", LocalDate.now(),
+                                                      LocalDateTime.now())),
+                               new NoteDetailSection(10, 40))
+        );
+
+        testInsertError();
+
         Note note1 = service.selectById(2);
         log.info("note1={}", note1);
 
@@ -70,5 +83,22 @@ public class MyApplication implements CommandLineRunner {
 
         Note note3 = service.selectByPages(1_000);
         log.info("note3={}", note3);
+
+        Note note4 = service.selectByName0("鷗外");
+        log.info("note4={}", note4);
+    }
+
+    private void testInsertError() {
+        try {
+            service.insert("タイトル99",
+                           new NoteDetails(
+                                   Collections.emptyList(),
+                                   new NoteDetailSection(0, 0))
+            );
+
+            System.exit(1);
+        } catch (Exception e) {
+            // com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException
+        }
     }
 }
