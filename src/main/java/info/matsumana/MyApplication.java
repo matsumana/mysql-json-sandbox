@@ -49,7 +49,17 @@ public class MyApplication implements CommandLineRunner {
                                                       LocalDateTime.of(2016, 11, 30, 5, 13, 59)),
                                        new NoteDetail("\uD867\uDE3Dのひらき", LocalDate.now(),
                                                       LocalDateTime.now())),
-                               new NoteDetailSection(100, 55))
+                               new NoteDetailSection(200, 300))
+        );
+
+        service.insert("タイトル3",
+                       new NoteDetails(
+                               Arrays.asList(
+                                       new NoteDetail("\uD869\uDECF", LocalDate.of(2016, 12, 30),
+                                                      LocalDateTime.of(2016, 12, 30, 5, 13, 59)),
+                                       new NoteDetail("\uD869\uDECA", LocalDate.now(),
+                                                      LocalDateTime.now())),
+                               new NoteDetailSection(1_000, 400))
         );
 
         Note note1 = service.selectById(2);
@@ -57,5 +67,8 @@ public class MyApplication implements CommandLineRunner {
 
         Note note2 = service.selectByName("%鷗%");
         log.info("note2={}", note2);
+
+        Note note3 = service.selectByPages(1_000);
+        log.info("note3={}", note3);
     }
 }
