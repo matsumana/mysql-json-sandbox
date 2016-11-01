@@ -1,3 +1,11 @@
-# how to run
+# how to run test
 
-    $ ./gradlew clean bootRun
+    $ ./gradlew test
+
+# how to run app
+
+    $ ./gradlew bootRun
+
+# how to clean
+
+    $ ./gradlew clean
